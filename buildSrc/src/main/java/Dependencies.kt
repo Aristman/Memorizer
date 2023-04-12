@@ -1,5 +1,5 @@
 object Dependencies {
-    const val gradleVersion = "8.0.0-rc01"
+    const val gradleVersion = "7.4.0"
     const val ktLintVersion = "10.3.0"
     const val dependenciesUpdateVersion = "0.42.0"
 
@@ -55,6 +55,7 @@ object Dependencies {
             const val bomMaterial = "androidx.compose.material:material"
             const val bomMaterial3 = "androidx.compose.material3:material3"
             const val bomFoundation = "androidx.compose.foundation:foundation"
+            const val bomUi = "androidx.compose.ui:ui"
             const val bomUiTooling = "androidx.compose.ui:ui-tooling"
             const val bomUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
             const val bomRxJava2 = "androidx.compose.runtime:runtime-rxjava2"
@@ -124,7 +125,7 @@ object Dependencies {
 
     object Dagger {
         const val daggerVersion = "2.22.1" // 2.42
-        const val hiltVersion = "2.42"
+        const val hiltVersion = "2.44"
 
         private const val javaxAnnotationVersion = "1.3.2"
         private const val javaxInjectVersion = "1"

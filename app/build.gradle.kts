@@ -3,6 +3,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -41,4 +43,7 @@ dependencies {
 
     implementation(Dependencies.Jetpack.core)
     implementation(Dependencies.Jetpack.material)
+    implementation(Dependencies.Dagger.hilt)
+    kapt(Dependencies.Dagger.hiltCompiler)
+    implementation(Dependencies.Cicerone.core)
 }
