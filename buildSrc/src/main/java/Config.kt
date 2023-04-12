@@ -14,10 +14,21 @@ object AppConfig {
     }
 }
 
- object Module {
-    const val app = ":app"
-    const val presentation = ":presentation"
-    const val domain = ":domain"
-    const val data = ":data"
-    const val common = ":common"
- }
+// object Module {
+//    const val app = ":app"
+//    const val presentation = ":presentation"
+//    const val domain = ":domain"
+//    const val data = ":data"
+//    const val common = ":common"
+// }
+
+enum class Module {
+    app,
+    presentation,
+    domain,
+    data,
+    common,
+}
+
+fun Module.getNameSpace(): String = "${AppConfig.applicationId}.$name"
+fun Module.moduleName(): String = ":$name"

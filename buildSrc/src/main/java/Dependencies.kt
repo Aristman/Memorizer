@@ -25,6 +25,7 @@ object Dependencies {
         private const val constraintLayoutVersion = "2.1.4"
         private const val appcompatVersion = "1.6.1"
         private const val browserVersion = "1.5.0"
+        private const val materialVersion = "1.8.0"
 
         const val core = "androidx.core:core-ktx:$coreVersion"
         const val fragment = "androidx.fragment:fragment-ktx:$fragmentVersion"
@@ -35,6 +36,7 @@ object Dependencies {
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
         const val browser = "androidx.browser:browser:$browserVersion"
+        const val material = "com.google.android.material:material:$materialVersion"
 
         object WorkManager {
             private const val version = "2.8.1"
@@ -44,13 +46,14 @@ object Dependencies {
         }
 
         object Compose {
-            const val compilerVersion = "1.4.0-alpha01"
+            const val compilerVersion = "1.4.1"
 
             private const val bomVersion = "2023.04.00"
             private const val activityVersion = "1.7.0"
 
             const val bom = "androidx.compose:compose-bom:$bomVersion"
             const val bomMaterial = "androidx.compose.material:material"
+            const val bomMaterial3 = "androidx.compose.material3:material3"
             const val bomFoundation = "androidx.compose.foundation:foundation"
             const val bomUiTooling = "androidx.compose.ui:ui-tooling"
             const val bomUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
@@ -104,6 +107,7 @@ object Dependencies {
         private const val runnerVersion = "1.5.2"
 
         const val junit = "junit:junit:$junitVersion"
+        const val extJunit = "androidx.test.ext:junit:$extJunitVersion"
         const val extJunitKtx = "androidx.test.ext:junit-ktx:$extJunitVersion"
         const val espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
 

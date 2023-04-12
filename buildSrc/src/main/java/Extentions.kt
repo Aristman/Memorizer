@@ -1,10 +1,16 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
-fun DependencyHandler.testBaseDependencies() {
+fun DependencyHandler.testUiBaseDependencies() {
     addTestImplementation(Dependencies.Test.junit)
+    addAndroidTestImplementationPlatform(Dependencies.Jetpack.Compose.bom)
     addAndroidTestImplementation(Dependencies.Test.extJunitKtx)
     addAndroidTestImplementation(Dependencies.Test.espresso)
     addAndroidTestImplementation(Dependencies.Test.monitor)
+}
+
+fun DependencyHandler.unitTestBaseDependencies() {
+    addTestImplementation(Dependencies.Test.junit)
+    addAndroidTestImplementation(Dependencies.Test.extJunit)
 }
 
 fun DependencyHandler.composeBomUiToolingDependencies() {
@@ -27,6 +33,10 @@ fun DependencyHandler.addTestImplementation(dependency: String) {
 
 fun DependencyHandler.addAndroidTestImplementation(dependency: String) {
     add("androidTestImplementation", dependency)
+}
+
+fun DependencyHandler.addAndroidTestImplementationPlatform(dependency: String) {
+    add("androidTestImplementation", platform(dependency))
 }
 
 fun DependencyHandler.addDebugImplementation(dependency: String) {

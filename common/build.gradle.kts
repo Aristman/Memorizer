@@ -1,22 +1,18 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "ru.marslab.memorizer"
+    namespace = Module.common.getNameSpace()
     compileSdk = AppConfig.completeSdk
 
     defaultConfig {
-        applicationId = AppConfig.applicationId
         minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = Version.versionCode
-        versionName = Version.versionName
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,10 +31,21 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.jvmTarget
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Dependencies.Jetpack.Compose.compilerVersion
+    }
 }
 
 dependencies {
-
-    implementation(Dependencies.Jetpack.core)
-    implementation(Dependencies.Jetpack.material)
+    api(project(Module.app.moduleName()))
+    implementation(platform(Dependencies.Jetpack.Compose.bom))
+    implementation(Dependencies.Jetpack.Compose.bomMaterial)
+    composeBomUiToolingDependencies()
+    testUiBaseDependencies()
+    composeBomTestsDependencies()
 }
