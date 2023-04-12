@@ -13,15 +13,6 @@ object AppConfig {
         const val release = true
     }
 }
-
-// object Module {
-//    const val app = ":app"
-//    const val presentation = ":presentation"
-//    const val domain = ":domain"
-//    const val data = ":data"
-//    const val common = ":common"
-// }
-
 enum class Module {
     app,
     presentation,
