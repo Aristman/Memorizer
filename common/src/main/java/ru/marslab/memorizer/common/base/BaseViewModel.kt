@@ -26,23 +26,22 @@ abstract class BaseViewModel<ST> : ViewModel() {
     private val initState: ST
         get() = createInitState()
 
-    protected abstract fun createInitState(): ST
-
     private var _router: Router? = null
     val router: Router
         get() = checkNotNull(_router)
 
-    protected open val widgets: List<BaseWidgetModel<*>> = emptyList()
-
     private val _state = MutableStateFlow(initState)
     val state: StateFlow<ST>
         get() = _state.asStateFlow()
-    private val action = MutableSharedFlow<Action>()
 
     private val _event = MutableSharedFlow<Event?>()
-
     val event: SharedFlow<Event?>
         get() = _event.asSharedFlow()
+
+    private val action = MutableSharedFlow<Action>()
+    protected abstract fun createInitState(): ST
+
+    protected open val widgets: List<BaseWidgetModel<*>> = emptyList()
 
     init {
         this.action
@@ -59,7 +58,8 @@ abstract class BaseViewModel<ST> : ViewModel() {
 
     internal fun routerIsNotSet(): Boolean = _router == null
 
-    open fun handleFragmentArguments(arguments: Bundle) {}
+    open fun handleFragmentArguments(arguments: Bundle) {
+    }
 
     open fun backClick() {
         router.exit()

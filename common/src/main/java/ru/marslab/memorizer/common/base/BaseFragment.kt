@@ -36,7 +36,8 @@ abstract class BaseFragment<VM : BaseViewModel<*>> :
         }
     }
 
-    protected open fun VM.init() {}
+    protected open fun VM.init() {
+    }
 
     @Composable
     open fun Dialogs(viewModel: VM) {
