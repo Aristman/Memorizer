@@ -44,7 +44,7 @@ abstract class BaseViewModel<ST> : ViewModel() {
     protected open val widgets: List<BaseWidgetModel<*>> = emptyList()
 
     init {
-        this.action
+        action
             .onEach {
                 handleUserAction(it)
                 _state.tryEmit(reduceStateByAction(state.value, it))
@@ -98,7 +98,8 @@ abstract class BaseViewModel<ST> : ViewModel() {
     protected open fun handleUserAction(action: Action) {}
 
     protected fun List<BaseWidgetModel<*>>.actionObserve() = this.also { widgets ->
-        widgets.map { it.action }
+        widgets
+            .map { it.action }
             .merge()
             .onEach { action ->
                 this@BaseViewModel sendAction action
