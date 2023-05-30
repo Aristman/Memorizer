@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -25,10 +24,6 @@ import timber.log.Timber
 abstract class BaseViewModel<ST> : ViewModel() {
     private val initState: ST
         get() = createInitState()
-
-    private var _router: Router? = null
-    val router: Router
-        get() = checkNotNull(_router)
 
     private val _state = MutableStateFlow(initState)
     val state: StateFlow<ST>
@@ -52,17 +47,7 @@ abstract class BaseViewModel<ST> : ViewModel() {
             .stateIn(viewModelScope, SharingStarted.Eagerly, initState)
     }
 
-    fun setRouter(router: Router) {
-        _router = router
-    }
-
-    internal fun routerIsNotSet(): Boolean = _router == null
-
     open fun handleFragmentArguments(arguments: Bundle) {
-    }
-
-    open fun backClick() {
-        router.exit()
     }
 
     val actionReceiver: (Action) -> Unit = { action ->

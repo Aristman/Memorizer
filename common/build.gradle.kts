@@ -51,7 +51,6 @@ dependencies {
     implementation(Dependencies.Dagger.hilt)
     kapt(Dependencies.Dagger.hiltCompiler)
     implementation(Dependencies.Timber.core)
-    implementation(Dependencies.Cicerone.core)
     composeBomUiToolingDependencies()
     testUiBaseDependencies()
     composeBomTestsDependencies()

@@ -3,6 +3,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id(Dependencies.Dagger.hiltPlugin)
 }
 
 android {
@@ -57,6 +59,9 @@ dependencies {
     implementation(platform(Dependencies.Jetpack.Compose.bom))
     implementation(Dependencies.Jetpack.Compose.bomFoundation)
     implementation(Dependencies.Jetpack.Compose.activity)
+
+    kapt(Dependencies.Dagger.hiltCompiler)
+    implementation(Dependencies.Dagger.hilt)
 
     composeBomUiToolingDependencies()
     composeBomTestsDependencies()

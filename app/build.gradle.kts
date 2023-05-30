@@ -49,5 +49,4 @@ dependencies {
     implementation(Dependencies.Jetpack.material)
     implementation(Dependencies.Dagger.hilt)
     kapt(Dependencies.Dagger.hiltCompiler)
-    implementation(Dependencies.Cicerone.core)
 }
