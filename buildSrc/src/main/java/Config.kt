@@ -13,11 +13,13 @@ object AppConfig {
         const val release = true
     }
 }
+enum class Module {
+    app,
+    presentation,
+    domain,
+    data,
+    common,
+}
 
- object Module {
-    const val app = ":app"
-    const val presentation = ":presentation"
-    const val domain = ":domain"
-    const val data = ":data"
-    const val common = ":common"
- }
+fun Module.getNameSpace(): String = "${AppConfig.applicationId}.$name"
+fun Module.moduleName(): String = ":$name"
