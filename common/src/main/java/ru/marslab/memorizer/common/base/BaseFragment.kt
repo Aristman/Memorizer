@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ViewModelProvider
@@ -28,12 +29,20 @@ abstract class BaseFragment<VM : BaseViewModel<*>> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (viewModel as? LifecycleEventObserver)?.let { lifecycle.addObserver(it) }
-        view.findViewById<ComposeView>(R.id.main_view).setContent {
-            MemTheme {
-                Dialogs(viewModel = viewModel)
-                Content(viewModel = viewModel)
+        view.findViewById<ComposeView>(R.id.main_view)
+            .apply {
+                setViewCompositionStrategy(
+                    ViewCompositionStrategy.DisposeOnLifecycleDestroyed(
+                        lifecycle = this@BaseFragment.lifecycle
+                    )
+                )
             }
-        }
+            .setContent {
+                MemTheme {
+                    Dialogs(viewModel = viewModel)
+                    Content(viewModel = viewModel)
+                }
+            }
     }
 
     protected open fun VM.init() {
