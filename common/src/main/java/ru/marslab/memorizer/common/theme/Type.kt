@@ -5,7 +5,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
-import ru.marslab.memorizer.R
+import ru.marslab.memorizer.common.R
 
 private val appBaseFontMedium = FontFamily(Font(R.font.archivo_medium))
 private val appBaseFontRegular = FontFamily(Font(R.font.archivo))

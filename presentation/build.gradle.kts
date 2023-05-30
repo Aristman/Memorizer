@@ -13,6 +13,9 @@ android {
         minSdk = AppConfig.minSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -39,6 +42,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Dependencies.Jetpack.Compose.compilerVersion
     }
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
@@ -48,6 +56,7 @@ dependencies {
     implementation(Dependencies.Jetpack.viewModel)
     implementation(platform(Dependencies.Jetpack.Compose.bom))
     implementation(Dependencies.Jetpack.Compose.bomFoundation)
+    implementation(Dependencies.Jetpack.Compose.activity)
 
     composeBomUiToolingDependencies()
     composeBomTestsDependencies()

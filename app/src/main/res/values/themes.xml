@@ -1,8 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
-    <style name="Theme.Memorizer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
+
+    <style name="Theme.Memorizer" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

@@ -44,7 +44,6 @@ android {
 }
 
 dependencies {
-    api(project(Module.app.moduleName()))
     implementation(Dependencies.Jetpack.fragment)
     implementation(Dependencies.Jetpack.viewModel)
     implementation(platform(Dependencies.Jetpack.Compose.bom))

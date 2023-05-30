@@ -13,6 +13,7 @@ object AppConfig {
         const val release = true
     }
 }
+
 enum class Module {
     app,
     presentation,

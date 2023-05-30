@@ -1,8 +1,0 @@
-<resources>
-    <!-- Base application theme. -->
-    <style name="Theme.Memorizer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
-</resources>

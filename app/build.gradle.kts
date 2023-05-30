@@ -29,6 +29,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            versionNameSuffix = Version.debugSuffix
+        }
     }
     compileOptions {
         sourceCompatibility = AppConfig.javaVersion
@@ -40,6 +43,7 @@ android {
 }
 
 dependencies {
+    api(project(Module.presentation.moduleName()))
 
     implementation(Dependencies.Jetpack.core)
     implementation(Dependencies.Jetpack.material)
