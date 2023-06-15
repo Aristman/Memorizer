@@ -1,19 +1,21 @@
 package ru.marslab.memorizer.common.base
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.ViewModelProvider
-import ru.marslab.memorizer.common.R
 import ru.marslab.memorizer.common.theme.MemTheme
 import javax.inject.Inject
 
 abstract class BaseFragment<VM : BaseViewModel<*>> :
-    Fragment(R.layout.fragment_compose_view) {
+    Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -26,10 +28,27 @@ abstract class BaseFragment<VM : BaseViewModel<*>> :
         arguments?.let { viewModel.handleFragmentArguments(it) }
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return container?.apply {
+            addView(
+                ComposeView(requireContext()).apply {
+                    layoutParams = LayoutParams(
+                        LayoutParams.MATCH_PARENT,
+                        LayoutParams.MATCH_PARENT
+                    )
+                }
+            )
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (viewModel as? LifecycleEventObserver)?.let { lifecycle.addObserver(it) }
-        view.findViewById<ComposeView>(R.id.main_view)
+        (view.rootView as ComposeView)
             .apply {
                 setViewCompositionStrategy(
                     ViewCompositionStrategy.DisposeOnLifecycleDestroyed(

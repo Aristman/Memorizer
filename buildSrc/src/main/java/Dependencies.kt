@@ -117,12 +117,6 @@ object Dependencies {
         const val runner = "androidx.test:runner:$runnerVersion"
     }
 
-    object Cicerone {
-        private const val version = "7.1"
-
-        const val core = "com.github.terrakok:cicerone:$version"
-    }
-
     object Dagger {
         const val daggerVersion = "2.22.1" // 2.42
         const val hiltVersion = "2.44"

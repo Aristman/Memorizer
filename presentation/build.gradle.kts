@@ -57,7 +57,7 @@ dependencies {
     implementation(Dependencies.Jetpack.core)
     implementation(Dependencies.Jetpack.viewModel)
     implementation(platform(Dependencies.Jetpack.Compose.bom))
-    implementation(Dependencies.Jetpack.Compose.bomFoundation)
+    implementation(Dependencies.Jetpack.Compose.bomMaterial)
     implementation(Dependencies.Jetpack.Compose.activity)
 
     kapt(Dependencies.Dagger.hiltCompiler)
