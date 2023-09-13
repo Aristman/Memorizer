@@ -91,4 +91,8 @@ abstract class BaseViewModel<ST> : ViewModel() {
             }
             .shareIn(viewModelScope, SharingStarted.Eagerly)
     }
+
+    override fun onCleared() {
+        widgets.forEach { it.onDestroy() }
+    }
 }

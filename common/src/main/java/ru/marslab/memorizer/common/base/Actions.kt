@@ -10,4 +10,4 @@ sealed class AppAction : Action {
 data class SnackBarAction(
     val text: String,
     val action: Action
-)
+) : Action
